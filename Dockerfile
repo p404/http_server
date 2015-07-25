@@ -6,4 +6,3 @@ RUN git clone https://github.com/p404/http_server /home/webserver
 RUN cd /home/webserver && gcc webserver.c -o server
 EXPOSE 80
 CMD ["./home/webserver/server"]
-ENTRYPOINT  /bin/sh
