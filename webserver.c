@@ -15,16 +15,18 @@ int main()
     if (server_sockfd == -1)
     {
         perror("Error: ");
+        return 1;
     }
 
     sin.sin_family = AF_INET;
     sin.sin_addr.s_addr = INADDR_ANY;
-    sin.sin_port = htons( 8080 );
+    sin.sin_port = htons( 80 );
 
     //Bind socket to a port
     if( bind(server_sockfd, (struct sockaddr *)&sin , sizeof(sin)) < 0)
     {
         perror("Error: ");
+        return 1;
     }
 
     //Listen for incoming connections
@@ -37,6 +39,7 @@ int main()
       if (client_sockfd < 0)
       {
           perror("Error: ");
+          return 1;
       }
 
       read(client_sockfd, buffer, sizeof(buffer));
